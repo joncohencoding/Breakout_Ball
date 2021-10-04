@@ -36,7 +36,7 @@ public class MyPanel extends JPanel {
         System.out.println(model.getPaddle().getX());
         draw(g2, model.getPaddle());
         draw(g2, model.getBall());
-        draw(g2, model.getBrick());
+        draw(g2, model.getBrickArray());
     }
 
     //Draw Paddle
@@ -61,11 +61,15 @@ public class MyPanel extends JPanel {
     }
 
     //Draw Bricks
-    public static void draw(Graphics2D g2, Brick brick){
-        Rectangle brickImage = new Rectangle(brick.getX(),brick.getY(), brick.getWidth(),brick.getHeight());
-        g2.setColor(brick.getColor());
-        g2.fill(brickImage);
-        g2.draw(brickImage);
+    public static void draw(Graphics2D g2, Brick[] brickArray){
+        for(int i = 0; i<brickArray.length; i++){
+            Brick brick = brickArray[i];
+            Rectangle brickImage = new Rectangle(brick.getX(),brick.getY(), brick.getWidth(),brick.getHeight());
+            g2.setColor(brick.getColor());
+            g2.fill(brickImage);
+            g2.draw(brickImage);
+        }
+
     }
 
 

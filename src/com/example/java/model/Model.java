@@ -5,10 +5,21 @@ public class Model {
     Ball ball;
     Brick brick;
     int numBricks;
+    Brick[] brickArray;
     public void createGamePieces(){
         paddle = new Paddle();
         ball = new Ball();
-        brick = new Brick();
+        numBricks = 20;
+        brickArray = new Brick[numBricks];
+
+        //This shouldn't be here
+
+        for(int i = 0; i <numBricks; i++){
+
+            brick = new Brick(i);
+            brickArray[i] = brick;
+        }
+
     }
 
     public Paddle getPaddle(){
@@ -17,7 +28,7 @@ public class Model {
 
     public Ball getBall(){return ball;}
 
-    public Brick getBrick(){return brick;}
+    public Brick[] getBrickArray(){return brickArray;}
 
     public int getNumBricks(){return numBricks;}
 }
