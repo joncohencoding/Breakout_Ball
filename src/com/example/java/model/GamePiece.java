@@ -8,6 +8,7 @@ public class GamePiece extends Model {
     private int y;
     private int width;
     private int height;
+    private int radius;
     private Image image;
 
     public int getX(){
@@ -40,6 +41,12 @@ public class GamePiece extends Model {
 
     public void setHeight(int newHeight){
         height = newHeight;
+    }
+
+    public int getRadius(){return radius;}
+
+    public void setRadius(int newRadius){
+        radius = newRadius;
     }
 
     public Image getImage(){

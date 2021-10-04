@@ -1,9 +1,11 @@
 package com.example.java.view;
+import com.example.java.model.Ball;
 import com.example.java.model.Model;
 import com.example.java.model.Paddle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class MyPanel extends JPanel {
     private static Model model;
@@ -32,6 +34,7 @@ public class MyPanel extends JPanel {
     public static void draw(Graphics2D g2){
         System.out.println(model.getPaddle().getX());
         draw(g2, model.getPaddle());
+        draw(g2, model.getBall());
     }
 
     //Draw Paddle
@@ -40,6 +43,19 @@ public class MyPanel extends JPanel {
         g2.setColor(Color.RED);
         g2.fill(paddleImage);
         g2.draw(paddleImage);
+    }
+
+    //Draw Circle
+    public static void draw(Graphics2D g2, Ball ball){
+        Double x = Double.valueOf(ball.getX());
+        Double y = Double.valueOf(ball.getY());
+        Double height = Double.valueOf(ball.getHeight());
+        Double width = Double.valueOf(ball.getWidth());
+
+        Ellipse2D ballImage = new Ellipse2D.Double(x, y, height, width);
+        g2.setColor(Color.WHITE);
+        g2.fill(ballImage);
+        g2.draw(ballImage);
     }
 
 
