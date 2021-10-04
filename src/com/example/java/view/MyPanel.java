@@ -1,5 +1,6 @@
 package com.example.java.view;
 import com.example.java.model.Ball;
+import com.example.java.model.Brick;
 import com.example.java.model.Model;
 import com.example.java.model.Paddle;
 
@@ -35,12 +36,13 @@ public class MyPanel extends JPanel {
         System.out.println(model.getPaddle().getX());
         draw(g2, model.getPaddle());
         draw(g2, model.getBall());
+        draw(g2, model.getBrick());
     }
 
     //Draw Paddle
     public static void draw(Graphics2D g2, Paddle paddle){
         Rectangle paddleImage = new Rectangle(paddle.getX(),paddle.getY(), paddle.getWidth(),paddle.getHeight());
-        g2.setColor(Color.RED);
+        g2.setColor(paddle.getColor());
         g2.fill(paddleImage);
         g2.draw(paddleImage);
     }
@@ -53,9 +55,17 @@ public class MyPanel extends JPanel {
         Double width = Double.valueOf(ball.getWidth());
 
         Ellipse2D ballImage = new Ellipse2D.Double(x, y, height, width);
-        g2.setColor(Color.WHITE);
+        g2.setColor(ball.getColor());
         g2.fill(ballImage);
         g2.draw(ballImage);
+    }
+
+    //Draw Bricks
+    public static void draw(Graphics2D g2, Brick brick){
+        Rectangle brickImage = new Rectangle(brick.getX(),brick.getY(), brick.getWidth(),brick.getHeight());
+        g2.setColor(brick.getColor());
+        g2.fill(brickImage);
+        g2.draw(brickImage);
     }
 
 

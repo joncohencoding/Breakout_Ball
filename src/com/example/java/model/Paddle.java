@@ -14,6 +14,7 @@ public class Paddle extends GamePiece {
         this.setY(600);
         this.setHeight(10);
         this.setWidth(50);
+        this.setColor(Color.GREEN);
     }
 
 

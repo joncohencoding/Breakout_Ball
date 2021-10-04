@@ -9,6 +9,7 @@ public class GamePiece extends Model {
     private int width;
     private int height;
     private int radius;
+    private Color color;
     private Image image;
 
     public int getX(){
@@ -56,6 +57,10 @@ public class GamePiece extends Model {
     public void setImage(Image newImage){
         image = newImage;
     }
+
+    public Color getColor(){return color;}
+
+    public void setColor(Color newColor){color = newColor;}
 
 
 }
