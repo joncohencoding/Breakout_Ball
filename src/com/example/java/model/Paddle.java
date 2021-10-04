@@ -10,8 +10,8 @@ import java.util.logging.Logger;
 
 public class Paddle extends GamePiece {
     public Paddle() {
-        this.setX(400);
-        this.setY(500);
+        this.setX(225);
+        this.setY(600);
         this.setHeight(10);
         this.setWidth(50);
     }

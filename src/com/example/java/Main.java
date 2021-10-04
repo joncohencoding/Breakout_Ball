@@ -7,7 +7,6 @@ import com.example.java.view.View;
 public class Main {
 
     public static void main(String[] args) {
-        int testing = 0;
         Model model = new Model();
         View view = new View();
         Controller controller  = new Controller(model, view);

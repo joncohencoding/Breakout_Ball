@@ -19,6 +19,9 @@ public class View extends JFrame{
         model  = new Model();
     }
 
+    //Creates Frame object
+    //Creates MyPanel object
+    //Paints MyPanel object
     public void createFrame(Model modelArg){
         model = modelArg;
         frame = new JFrame();
@@ -27,6 +30,7 @@ public class View extends JFrame{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Breakout Ball");
         frame.getContentPane().setBackground(Color.BLACK);
+        frame.setResizable(false);
         panel = new MyPanel();
 
         panel.updateModel(model);
@@ -38,28 +42,13 @@ public class View extends JFrame{
 
 
     public void updateView(Model modelArg){
-        Graphics g;
         model = modelArg;
-        System.out.println("Hi there");
-        System.out.println(SwingUtilities.isEventDispatchThread());
-
         revalidate();
-
-        /*
-                repaint() BELOW NOT BEING INVOKED
-         */
         panel.updateModel(model);
         panel.repaint();
     }
 
-    @Override
-    public void paint(Graphics g){
-        super.paint(g);
-        Graphics2D g2 = (Graphics2D) g;
-        System.out.println("Hello");
-        draw(g2);
 
-    }
 
 
     public static void draw(Graphics2D g2){
