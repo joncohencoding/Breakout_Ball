@@ -1,7 +1,6 @@
 package com.example.java.model;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class GamePiece extends Model {
 
