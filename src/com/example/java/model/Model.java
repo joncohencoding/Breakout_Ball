@@ -1,26 +1,25 @@
 package com.example.java.model;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public class Model {
     Paddle paddle;
     Ball ball;
-    Brick brick;
     int numBricks;
-    Brick[] brickArray;
+    ArrayList<Brick> brickArrayList;
     public void createGamePieces(){
         paddle = new Paddle();
         ball = new Ball();
         numBricks = 20;
-        brickArray = new Brick[numBricks];
+        brickArrayList = new ArrayList<Brick>();
 
-        //This shouldn't be here
-
-        for(int i = 0; i <numBricks; i++){
-
-            brick = new Brick(i);
-            brickArray[i] = brick;
+        for(int i = 0; i<numBricks; i++){
+            brickArrayList.add(new Brick(i));
         }
 
     }
+
 
     public Paddle getPaddle(){
         return paddle;
@@ -28,7 +27,7 @@ public class Model {
 
     public Ball getBall(){return ball;}
 
-    public Brick[] getBrickArray(){return brickArray;}
 
-    public int getNumBricks(){return numBricks;}
+    public ArrayList<Brick> getBrickArrayList(){return brickArrayList;}
+
 }

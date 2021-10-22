@@ -10,6 +10,7 @@ public class GamePiece extends Model {
     private int height;
     private int radius;
     private Color color;
+    private boolean destroyed;
     private Image image;
 
     public int getX(){
@@ -61,6 +62,10 @@ public class GamePiece extends Model {
     public Color getColor(){return color;}
 
     public void setColor(Color newColor){color = newColor;}
+
+    public boolean isDestroyed(){return destroyed;}
+
+    public void setDestroyed(boolean destroy){destroyed = destroy;}
 
 
 }

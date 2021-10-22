@@ -7,7 +7,7 @@ import com.example.java.view.View;
 public class GamePlay extends Controller {
 
 
-    public GamePlay(Model model, View view) {
+    public GamePlay(Model model, View view) throws InterruptedException {
         super(model, view);
     }
 /*

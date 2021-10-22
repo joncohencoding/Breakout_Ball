@@ -6,13 +6,35 @@ import com.example.java.model.Paddle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 public class MyPanel extends JPanel {
     private static Model model;
     public MyPanel(){
         setBorder(BorderFactory.createLineBorder(Color.black));
         setBackground(Color.BLACK);
+        MyMouse myMouse = new MyMouse();
+        addMouseListener(myMouse);
+    }
+
+    private class MyMouse extends MouseAdapter {
+        public void mousePressed(MouseEvent e) {
+            if(model.getPaddle().getX() == 30){
+                model.getPaddle().setX(300);
+                model.getBall().setX(10);
+                model.getBrickArrayList().remove(0);
+            }
+            else{
+                model.getPaddle().setX(30);
+                model.getBall().setX(30);
+                model.getBrickArrayList().remove(0);
+            }
+
+            repaint(); // repaint the whole JPanel
+        }
     }
 
     public Dimension getPreferredSize(){
@@ -33,10 +55,9 @@ public class MyPanel extends JPanel {
 
     //Draw each game component
     public static void draw(Graphics2D g2){
-        System.out.println(model.getPaddle().getX());
         draw(g2, model.getPaddle());
         draw(g2, model.getBall());
-        draw(g2, model.getBrickArray());
+        draw(g2, model.getBrickArrayList());
     }
 
     //Draw Paddle
@@ -47,7 +68,7 @@ public class MyPanel extends JPanel {
         g2.draw(paddleImage);
     }
 
-    //Draw Circle
+    //Draw Ball
     public static void draw(Graphics2D g2, Ball ball){
         Double x = Double.valueOf(ball.getX());
         Double y = Double.valueOf(ball.getY());
@@ -61,16 +82,23 @@ public class MyPanel extends JPanel {
     }
 
     //Draw Bricks
-    public static void draw(Graphics2D g2, Brick[] brickArray){
-        for(int i = 0; i<brickArray.length; i++){
-            Brick brick = brickArray[i];
-            Rectangle brickImage = new Rectangle(brick.getX(),brick.getY(), brick.getWidth(),brick.getHeight());
-            g2.setColor(brick.getColor());
-            g2.fill(brickImage);
-            g2.draw(brickImage);
+    public static void draw(Graphics2D g2, ArrayList<Brick> brickArrayList) {
+        for (Brick brick : brickArrayList) {
+            draw(g2, brick);
         }
-
     }
+
+
+
+    //Draw Brick
+    public static void draw(Graphics2D g2, Brick brick){
+        //g.clearRect(1,1, 500, 550);
+        Rectangle paddleImage = new Rectangle(brick.getX(),brick.getY(), brick.getWidth(),brick.getHeight());
+        g2.setColor(brick.getColor());
+        g2.fill(paddleImage);
+        g2.draw(paddleImage);
+    }
+
 
 
 }
